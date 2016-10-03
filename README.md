@@ -20,3 +20,7 @@ content
 ```
 
 It will hide your text and place the title at the top with a dropdown/scroll up arrow.
+
+## Demo
+
+![ ](img/example.gif)
