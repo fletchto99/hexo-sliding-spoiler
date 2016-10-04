@@ -1,16 +1,23 @@
 const fs = require('hexo-fs');
 const path = require('path');
 
-hexo.extend.tag.register('spoiler', (args, content) => `<div class='spoiler collapsed'>${args[0] && `<div class='spoiler-title'>${args[0]}</div>`}<div class='spoiler-content'>${content}</div></div></div>`, { ends: true });
+hexo.extend.tag.register('spoiler', (args, content) =>`<div class='spoiler collapsed'>${args[0] && `<div class='spoiler-title'>${args[0]}</div>`}<div class='spoiler-content'>${hexo.render.renderSync({
+    text: content,
+    engine: "markdown"
+})}</div></div></div>`, {ends: true});
 
-hexo.extend.generator.register('spoiler_asset', () =>  [
+hexo.extend.generator.register('spoiler_asset', () => [
     {
         path: 'css/spoiler.css',
-        data: function() {return fs.createReadStream(path.resolve(path.resolve(__dirname, "./assets"),'spoiler.css'));}
+        data: function () {
+            return fs.createReadStream(path.resolve(path.resolve(__dirname, "./assets"), 'spoiler.css'));
+        }
     },
     {
         path: 'js/spoiler.js',
-        data: function() {return fs.createReadStream(path.resolve(path.resolve(__dirname, "./assets"),'spoiler.js'));}
+        data: function () {
+            return fs.createReadStream(path.resolve(path.resolve(__dirname, "./assets"), 'spoiler.js'));
+        }
     }
 ]);
 
