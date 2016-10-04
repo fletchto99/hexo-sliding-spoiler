@@ -56,7 +56,7 @@
     -webkit-transition-timing-function: ease-in;
     -o-transition-timing-function: ease-in;
     transition-timing-function: ease-in;
-    max-height: 100000px;
+    max-height: 15000px;
     overflow: hidden;
 }
 
