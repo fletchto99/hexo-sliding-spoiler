@@ -59,3 +59,7 @@
     max-height: 1000px;
     overflow: hidden;
 }
+
+.spoiler.expanded .spoiler-content p:first-child {
+    margin-top: 0;
+}
