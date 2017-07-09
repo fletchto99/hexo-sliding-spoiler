@@ -16,7 +16,7 @@ plugins:
 ```plain
 {% spoiler title %}
 content
-{% endspoler %}
+{% endspoiler %}
 ```
 
 It will hide your text and place the title at the top with a dropdown/scroll up arrow.
