@@ -1,10 +1,12 @@
 const fs = require('hexo-fs');
 const path = require('path');
 
-hexo.extend.tag.register('spoiler', (args, content) =>`<div class='spoiler collapsed'>${args[0] && `<div class='spoiler-title'>${args[0]}</div>`}<div class='spoiler-content'>${hexo.render.renderSync({
-    text: content,
-    engine: "markdown"
-})}</div></div></div>`, {ends: true});
+hexo.extend.tag.register('spoiler', function(args,content){
+    var arg_string = args.join(' ');
+    return `<div class='spoiler collapsed'>${arg_string && `<div class='spoiler-title'>${arg_string}</div>`}<div class='spoiler-content'>${hexo.render.renderSync({
+        text: content,
+        engine: "markdown"
+    })}</div></div></div>`}, {ends: true});
 
 hexo.extend.generator.register('spoiler_asset', () => [
     {
