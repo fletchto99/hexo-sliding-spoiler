@@ -1,6 +1,7 @@
 Inspired by [hexo-spoiler](https://github.com/unnamed42/hexo-spoiler)
 
 ## Install
+
 ```bash
 npm install hexo-sliding-spoiler --save
 ```
@@ -13,6 +14,7 @@ plugins:
 ```
 
 ## Syntax
+
 ```plain
 {% spoiler title %}
 content
@@ -24,3 +26,22 @@ It will hide your text and place the title at the top with a dropdown/scroll up 
 ## Demo
 
 ![ ](img/example.gif)
+
+## Example
+
+### One word title
+
+```plain
+{% spoiler word %}
+content
+{% endspoiler %}
+```
+
+### Title containing spaces
+
+
+```plain
+{% spoiler "Several spaces in the title" %}
+content
+{% endspoiler %}
+```
