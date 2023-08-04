@@ -1,12 +1,12 @@
 const fs = require('hexo-fs');
 const path = require('path');
 
-hexo.extend.tag.register('spoiler', (args, content) =>
-`<div class='spoiler collapsed'>
-    <div class='spoiler-title'>
+hexo.extend.tag.register('sspoiler', (args, content) =>
+`<div class='sspoiler collapsed'>
+    <div class='sspoiler-title'>
         ${args.join(" ")}
     </div>
-    <div class='spoiler-content'>
+    <div class='sspoiler-content'>
         ${
             hexo.render.renderSync({
                 text: content,
@@ -18,7 +18,7 @@ hexo.extend.tag.register('spoiler', (args, content) =>
     ends: true
 });
 
-hexo.extend.generator.register('spoiler_asset', () => [
+hexo.extend.generator.register('sspoiler_asset', () => [
     {
         path: 'css/spoiler.css',
         data: function () {

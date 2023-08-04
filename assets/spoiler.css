@@ -1,4 +1,4 @@
-.spoiler {
+.sspoiler {
     margin: 5px 0;
     padding: 0 15px;
     border: 1px solid #E5E5E5;
@@ -7,7 +7,7 @@
     border-radius: 3px;
 }
 
-.spoiler .spoiler-title {
+.sspoiler .sspoiler-title {
     background: #E5E5E5;
     margin: 0 -15px;
     padding: 5px 15px;
@@ -18,19 +18,19 @@
     cursor: pointer;
 }
 
-.spoiler .spoiler-title:before {
+.sspoiler .sspoiler-title:before {
     font-weight: bold;
 }
 
-.spoiler.collapsed .spoiler-title:before {
+.sspoiler.collapsed .sspoiler-title:before {
     content: "Show ";
 }
 
-.spoiler.expanded .spoiler-title:before {
+.sspoiler.expanded .sspoiler-title:before {
     content: "Hide ";
 }
 
-.spoiler .spoiler-content {
+.sspoiler .sspoiler-content {
     padding-top: 0;
     padding-bottom: 0;
     margin-top: 0;
@@ -45,16 +45,16 @@
     transition-timing-function: ease-in-out;
 }
 
-.spoiler.collapsed .spoiler-content {
+.sspoiler.collapsed .sspoiler-content {
     overflow: hidden;
     max-height: 0;
 }
 
-.spoiler.expanded .spoiler-content {
+.sspoiler.expanded .sspoiler-content {
     max-height: 3000px;
     overflow: hidden;
 }
 
-.spoiler .spoiler-content p:first-child {
+.sspoiler .sspoiler-content p:first-child {
     margin-top: 0 !important;
 }

@@ -16,9 +16,9 @@ plugins:
 ## Syntax
 
 ```plain
-{% spoiler title %}
+{% sspoiler title %}
 content
-{% endspoiler %}
+{% endsspoiler %}
 ```
 
 It will hide your text and place the title at the top with a dropdown/scroll up arrow.
@@ -32,16 +32,16 @@ It will hide your text and place the title at the top with a dropdown/scroll up 
 ### One word title
 
 ```plain
-{% spoiler word %}
+{% sspoiler word %}
 content
-{% endspoiler %}
+{% endsspoiler %}
 ```
 
 ### Title containing spaces
 
 
 ```plain
-{% spoiler "Several spaces in the title" %}
+{% sspoiler "Several spaces in the title" %}
 content
-{% endspoiler %}
+{% endsspoiler %}
 ```
