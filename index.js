@@ -33,9 +33,21 @@ hexo.extend.generator.register('spoiler_asset', () => [
     }
 ]);
 
-hexo.extend.filter.register('after_post_render', (data) => {
-    let link_css = `<link rel="stylesheet" href="${hexo.config.root}css/spoiler.css" type="text/css">`;
-    let link_js = `<script src="${hexo.config.root}js/spoiler.js" type="text/javascript" async></script>`;
-    data.content += link_css + link_js;
-    return data;
+// Inject CSS into <head> and JS before </body> on any page containing a spoiler.
+// This replaces the previous after_post_render approach which only added assets to
+// data.content — that failed on index/archive pages where themes render excerpts
+// instead of the full post content.
+hexo.extend.filter.register('after_render:html', (str) => {
+    if (!str.includes('class=\'spoiler') && !str.includes('class="spoiler')) {
+        return str;
+    }
+
+    const root = hexo.config.root || '/';
+    const link_css = `<link rel="stylesheet" href="${root}css/spoiler.css" type="text/css">`;
+    const link_js = `<script src="${root}js/spoiler.js" type="text/javascript"></script>`;
+
+    str = str.replace('</head>', link_css + '</head>');
+    str = str.replace('</body>', link_js + '</body>');
+
+    return str;
 });
