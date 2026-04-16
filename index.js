@@ -23,15 +23,11 @@ hexo.extend.tag.register('sliding-spoiler', spoilerTag, tagOptions);
 hexo.extend.generator.register('spoiler_asset', () => [
     {
         path: 'css/spoiler.css',
-        data: function () {
-            return fs.createReadStream(path.resolve(__dirname, 'assets', 'spoiler.css'));
-        }
+        data: () => fs.createReadStream(path.resolve(__dirname, 'assets', 'spoiler.css'))
     },
     {
         path: 'js/spoiler.js',
-        data: function () {
-            return fs.createReadStream(path.resolve(__dirname, 'assets', 'spoiler.js'));
-        }
+        data: () => fs.createReadStream(path.resolve(__dirname, 'assets', 'spoiler.js'))
     }
 ]);
 

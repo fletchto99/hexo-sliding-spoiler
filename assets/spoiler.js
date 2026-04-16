@@ -1,7 +1,7 @@
-document.addEventListener('DOMContentLoaded', function () {
-    [].forEach.call(document.getElementsByClassName('spoiler'), function(panel) {
-        var content = panel.getElementsByClassName('spoiler-content')[0];
-        panel.getElementsByClassName('spoiler-title')[0].onclick = function() {
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.spoiler').forEach((panel) => {
+        const content = panel.querySelector('.spoiler-content');
+        panel.querySelector('.spoiler-title').addEventListener('click', () => {
             if (panel.classList.contains('collapsed')) {
                 panel.classList.replace('collapsed', 'expanded');
                 content.style.maxHeight = content.scrollHeight + 'px';
@@ -9,6 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 panel.classList.replace('expanded', 'collapsed');
                 content.style.maxHeight = '0';
             }
-        }
+        });
     });
 });
