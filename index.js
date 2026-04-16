@@ -1,12 +1,12 @@
-const fs = require('hexo-fs');
+const fs = require('fs');
 const path = require('path');
 
-hexo.extend.tag.register('spoiler', (args, content) =>
-`<div class='spoiler collapsed'>
-    <div class='spoiler-title'>
+const spoilerTag = (args, content) =>
+`<div class='sliding-spoiler collapsed'>
+    <div class='sliding-spoiler-title'>
         ${args.join(" ")}
     </div>
-    <div class='spoiler-content'>
+    <div class='sliding-spoiler-content'>
         ${
             hexo.render.renderSync({
                 text: content,
@@ -14,28 +14,38 @@ hexo.extend.tag.register('spoiler', (args, content) =>
             }) || "No content to show"
         }
     </div>
-</div>`, {
-    ends: true
-});
+</div>`;
+
+const tagOptions = { ends: true };
+
+hexo.extend.tag.register('sliding_spoiler', spoilerTag, tagOptions);
 
 hexo.extend.generator.register('spoiler_asset', () => [
     {
-        path: 'css/spoiler.css',
-        data: function () {
-            return fs.createReadStream(path.resolve(path.resolve(__dirname, "./assets"), 'spoiler.css'));
-        }
+        path: 'css/sliding-spoiler.css',
+        data: () => fs.createReadStream(path.resolve(__dirname, 'assets', 'sliding-spoiler.css'))
     },
     {
-        path: 'js/spoiler.js',
-        data: function () {
-            return fs.createReadStream(path.resolve(path.resolve(__dirname, "./assets"), 'spoiler.js'));
-        }
+        path: 'js/sliding-spoiler.js',
+        data: () => fs.createReadStream(path.resolve(__dirname, 'assets', 'sliding-spoiler.js'))
     }
 ]);
 
-hexo.extend.filter.register('after_post_render', (data) => {
-    let link_css = `<link rel="stylesheet" href="${hexo.config.root}css/spoiler.css" type="text/css">`;
-    let link_js = `<script src="${hexo.config.root}js/spoiler.js" type="text/javascript" async></script>`;
-    data.content += link_css + link_js;
-    return data;
+// Inject CSS into <head> and JS before </body> on any page containing a spoiler.
+// This replaces the previous after_post_render approach which only added assets to
+// data.content — that failed on index/archive pages where themes render excerpts
+// instead of the full post content.
+hexo.extend.filter.register('after_render:html', (str) => {
+    if (!str.includes('sliding-spoiler')) {
+        return str;
+    }
+
+    const root = hexo.config.root || '/';
+    const link_css = `<link rel="stylesheet" href="${root}css/sliding-spoiler.css" type="text/css">`;
+    const link_js = `<script src="${root}js/sliding-spoiler.js" type="text/javascript"></script>`;
+
+    str = str.replace('</head>', link_css + '</head>');
+    str = str.replace('</body>', link_js + '</body>');
+
+    return str;
 });
