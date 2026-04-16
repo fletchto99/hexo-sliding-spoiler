@@ -31,6 +31,8 @@
 }
 
 .spoiler .spoiler-content {
+    overflow: hidden;
+    max-height: 0;
     padding-top: 0;
     padding-bottom: 0;
     margin-top: 0;
@@ -43,16 +45,6 @@
     -webkit-transition-timing-function: ease-in-out;
     -o-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
-}
-
-.spoiler.collapsed .spoiler-content {
-    overflow: hidden;
-    max-height: 0;
-}
-
-.spoiler.expanded .spoiler-content {
-    max-height: 3000px;
-    overflow: auto;
 }
 
 .spoiler .spoiler-content p:first-child {
