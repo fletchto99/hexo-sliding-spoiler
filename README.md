@@ -50,3 +50,17 @@ content
 content
 {% endsliding_spoiler %}
 ```
+
+## Using code blocks inside spoilers
+
+Markdown code fences (triple backticks) inside spoiler tags can cause parsing
+issues due to a [Hexo/Nunjucks limitation](https://github.com/fletchto99/hexo-sliding-spoiler/issues/15).
+Use Hexo's built-in `codeblock` tag instead:
+
+```plain
+{% sliding_spoiler "Code example" %}
+{% codeblock lang:javascript %}
+console.log('Hello world');
+{% endcodeblock %}
+{% endsliding_spoiler %}
+```
