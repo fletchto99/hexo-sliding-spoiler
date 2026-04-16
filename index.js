@@ -1,4 +1,4 @@
-const fs = require('hexo-fs');
+const fs = require('fs');
 const path = require('path');
 
 const spoilerTag = (args, content) =>
@@ -24,13 +24,13 @@ hexo.extend.generator.register('spoiler_asset', () => [
     {
         path: 'css/spoiler.css',
         data: function () {
-            return fs.createReadStream(path.resolve(path.resolve(__dirname, "./assets"), 'spoiler.css'));
+            return fs.createReadStream(path.resolve(__dirname, 'assets', 'spoiler.css'));
         }
     },
     {
         path: 'js/spoiler.js',
         data: function () {
-            return fs.createReadStream(path.resolve(path.resolve(__dirname, "./assets"), 'spoiler.js'));
+            return fs.createReadStream(path.resolve(__dirname, 'assets', 'spoiler.js'));
         }
     }
 ]);
