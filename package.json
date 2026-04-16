@@ -3,6 +3,10 @@
   "version": "2.0.0",
   "description": "A sliding spoiler creator for Hexo, inspired by hexo-spoiler",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "assets/"
+  ],
   "scripts": {
     "test": "echo \"Error: tests not implemented\" && exit 1"
   },
@@ -12,13 +16,16 @@
   },
   "keywords": [
     "hexo",
-    "spoiler"
+    "spoiler",
+    "sliding-spoiler"
   ],
   "author": "fletchto99",
   "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  },
   "bugs": {
     "url": "https://github.com/fletchto99/hexo-sliding-spoiler/issues"
   },
-  "homepage": "https://github.com/fletchto99/hexo-sliding-spoiler",
-  "dependencies": {}
+  "homepage": "https://github.com/fletchto99/hexo-sliding-spoiler"
 }
