@@ -10,6 +10,9 @@ permissions:
   id-token: write
   packages: write
 
+env:
+  NODE_VERSION: '24'
+
 jobs:
   publish-npm:
     runs-on: ubuntu-latest
@@ -18,7 +21,7 @@ jobs:
 
       - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
         with:
-          node-version: '22'
+          node-version: ${{ env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Publish to npm
@@ -31,7 +34,7 @@ jobs:
 
       - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
         with:
-          node-version: '22'
+          node-version: ${{ env.NODE_VERSION }}
           registry-url: 'https://npm.pkg.github.com'
 
       - name: Publish to GitHub Packages
