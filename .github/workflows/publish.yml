@@ -36,7 +36,11 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
 
       - name: Publish to GitHub Packages
-        run: npm publish --registry https://npm.pkg.github.com --access public
+        run: |
+          cp package.json package.json.bak
+          node -e "const p=require('./package.json'); p.name='@fletchto99/hexo-sliding-spoiler'; require('fs').writeFileSync('package.json', JSON.stringify(p, null, 2)+'\n')"
+          npm publish --registry https://npm.pkg.github.com --access public
+          mv package.json.bak package.json
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
