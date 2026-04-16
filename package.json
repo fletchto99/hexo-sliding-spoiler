@@ -22,7 +22,7 @@
   "author": "fletchto99",
   "license": "MIT",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "bugs": {
     "url": "https://github.com/fletchto99/hexo-sliding-spoiler/issues"
