@@ -1,4 +1,4 @@
-.spoiler {
+.sliding-spoiler {
     margin: 5px 0;
     padding: 0 15px;
     border: 1px solid #E5E5E5;
@@ -7,7 +7,7 @@
     border-radius: 3px;
 }
 
-.spoiler .spoiler-title {
+.sliding-spoiler .sliding-spoiler-title {
     background: #E5E5E5;
     margin: 0 -15px;
     padding: 5px 15px;
@@ -18,19 +18,19 @@
     cursor: pointer;
 }
 
-.spoiler .spoiler-title:before {
+.sliding-spoiler .sliding-spoiler-title:before {
     font-weight: bold;
 }
 
-.spoiler.collapsed .spoiler-title:before {
+.sliding-spoiler.collapsed .sliding-spoiler-title:before {
     content: "Show ";
 }
 
-.spoiler.expanded .spoiler-title:before {
+.sliding-spoiler.expanded .sliding-spoiler-title:before {
     content: "Hide ";
 }
 
-.spoiler .spoiler-content {
+.sliding-spoiler .sliding-spoiler-content {
     overflow: hidden;
     max-height: 0;
     padding-top: 0;
@@ -40,6 +40,6 @@
     transition: max-height 0.3s ease-in-out;
 }
 
-.spoiler .spoiler-content p:first-child {
+.sliding-spoiler .sliding-spoiler-content p:first-child {
     margin-top: 0 !important;
 }

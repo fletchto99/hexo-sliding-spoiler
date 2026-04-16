@@ -2,11 +2,11 @@ const fs = require('fs');
 const path = require('path');
 
 const spoilerTag = (args, content) =>
-`<div class='spoiler collapsed'>
-    <div class='spoiler-title'>
+`<div class='sliding-spoiler collapsed'>
+    <div class='sliding-spoiler-title'>
         ${args.join(" ")}
     </div>
-    <div class='spoiler-content'>
+    <div class='sliding-spoiler-content'>
         ${
             hexo.render.renderSync({
                 text: content,
@@ -18,7 +18,7 @@ const spoilerTag = (args, content) =>
 
 const tagOptions = { ends: true };
 
-hexo.extend.tag.register('sliding-spoiler', spoilerTag, tagOptions);
+hexo.extend.tag.register('sliding_spoiler', spoilerTag, tagOptions);
 
 hexo.extend.generator.register('spoiler_asset', () => [
     {
@@ -36,7 +36,7 @@ hexo.extend.generator.register('spoiler_asset', () => [
 // data.content — that failed on index/archive pages where themes render excerpts
 // instead of the full post content.
 hexo.extend.filter.register('after_render:html', (str) => {
-    if (!str.includes('class=\'spoiler') && !str.includes('class="spoiler')) {
+    if (!str.includes('class=\'sliding-spoiler') && !str.includes('class="sliding-spoiler')) {
         return str;
     }
 

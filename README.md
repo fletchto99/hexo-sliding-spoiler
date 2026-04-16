@@ -16,15 +16,15 @@ plugins:
 ## Syntax
 
 ```plain
-{% sliding-spoiler title %}
+{% sliding_spoiler title %}
 content
-{% endsliding-spoiler %}
+{% endsliding_spoiler %}
 ```
 
 It will hide your text and place the title at the top with a dropdown/scroll up arrow.
 
 > **⚠️ Breaking change (v2.0.0):** The tag was renamed from `{% spoiler %}` to
-> `{% sliding-spoiler %}` to avoid conflicts with
+> `{% sliding_spoiler %}` to avoid conflicts with
 > [hexo-spoiler](https://github.com/unnamed42/hexo-spoiler). Update your posts
 > to use the new tag name.
 
@@ -37,16 +37,16 @@ It will hide your text and place the title at the top with a dropdown/scroll up 
 ### One word title
 
 ```plain
-{% sliding-spoiler word %}
+{% sliding_spoiler word %}
 content
-{% endsliding-spoiler %}
+{% endsliding_spoiler %}
 ```
 
 ### Title containing spaces
 
 
 ```plain
-{% sliding-spoiler "Several spaces in the title" %}
+{% sliding_spoiler "Several spaces in the title" %}
 content
-{% endsliding-spoiler %}
+{% endsliding_spoiler %}
 ```
