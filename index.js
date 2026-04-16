@@ -1,7 +1,7 @@
 const fs = require('hexo-fs');
 const path = require('path');
 
-hexo.extend.tag.register('spoiler', (args, content) =>
+const spoilerTag = (args, content) =>
 `<div class='spoiler collapsed'>
     <div class='spoiler-title'>
         ${args.join(" ")}
@@ -14,9 +14,11 @@ hexo.extend.tag.register('spoiler', (args, content) =>
             }) || "No content to show"
         }
     </div>
-</div>`, {
-    ends: true
-});
+</div>`;
+
+const tagOptions = { ends: true };
+
+hexo.extend.tag.register('sliding-spoiler', spoilerTag, tagOptions);
 
 hexo.extend.generator.register('spoiler_asset', () => [
     {
