@@ -22,12 +22,12 @@ hexo.extend.tag.register('sliding_spoiler', spoilerTag, tagOptions);
 
 hexo.extend.generator.register('spoiler_asset', () => [
     {
-        path: 'css/spoiler.css',
-        data: () => fs.createReadStream(path.resolve(__dirname, 'assets', 'spoiler.css'))
+        path: 'css/sliding-spoiler.css',
+        data: () => fs.createReadStream(path.resolve(__dirname, 'assets', 'sliding-spoiler.css'))
     },
     {
-        path: 'js/spoiler.js',
-        data: () => fs.createReadStream(path.resolve(__dirname, 'assets', 'spoiler.js'))
+        path: 'js/sliding-spoiler.js',
+        data: () => fs.createReadStream(path.resolve(__dirname, 'assets', 'sliding-spoiler.js'))
     }
 ]);
 
@@ -36,13 +36,13 @@ hexo.extend.generator.register('spoiler_asset', () => [
 // data.content — that failed on index/archive pages where themes render excerpts
 // instead of the full post content.
 hexo.extend.filter.register('after_render:html', (str) => {
-    if (!str.includes('class=\'sliding-spoiler') && !str.includes('class="sliding-spoiler')) {
+    if (!str.includes('sliding-spoiler')) {
         return str;
     }
 
     const root = hexo.config.root || '/';
-    const link_css = `<link rel="stylesheet" href="${root}css/spoiler.css" type="text/css">`;
-    const link_js = `<script src="${root}js/spoiler.js" type="text/javascript"></script>`;
+    const link_css = `<link rel="stylesheet" href="${root}css/sliding-spoiler.css" type="text/css">`;
+    const link_js = `<script src="${root}js/sliding-spoiler.js" type="text/javascript"></script>`;
 
     str = str.replace('</head>', link_css + '</head>');
     str = str.replace('</body>', link_js + '</body>');
